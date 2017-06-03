@@ -8,7 +8,6 @@ import subprocess
 from collections import namedtuple
 
 Account = namedtuple('Account', ['gn', 'sn', 'uid', 'password', 'validity'])
-Sheet = namedtuple('Sheet', ['pos{}'.format(x) for x in range(10)])
 outdir = "./out/"
 
 
@@ -52,8 +51,9 @@ class SVGTemplate:
 
 
 def gensheets(cards, template, dummycard):
-    """Put cards on sheet in 10-up. Fill the rest of sheet with dummy cards"""
+    """Put 10 cards a on sheet. Fill the rest of sheet with dummy cards."""
     layout = SVGTemplate(template, outdir)
+    Sheet = namedtuple('Sheet', ['pos{}'.format(x) for x in range(10)])
     sheets = []
     cardsets = zip_longest(*[iter(cards)] * 10, fillvalue=dummycard)
     for i, cards in enumerate(cardsets):
