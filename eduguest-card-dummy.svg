@@ -29,7 +29,7 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="157.89478"
+     inkscape:cx="114.35931"
      inkscape:cy="73.691522"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -71,22 +71,22 @@
        sodipodi:insensitive="true" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:bold;font-stretch:normal;font-size:15px;line-height:124%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       style="font-style:normal;font-weight:bold;font-stretch:normal;font-size:15px;line-height:124.00000095%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="114.76436"
        y="1394.5828"
        id="text4780"
-       sodipodi:linespacing="124%">_____________@guest.cesnet.cz<tspan
+       sodipodi:linespacing="124%">______________@guest.cesnet.cz<tspan
    sodipodi:role="line"
    x="114.76436"
    y="1394.5828"
    id="password" /><tspan
    sodipodi:role="line"
    x="114.76436"
-   y="1411.0828"
-   id="tspan4627">___________________________</tspan><tspan
-   style="font-weight:normal;line-height:124%;"
+   y="1413.1827"
+   id="tspan4627">______________</tspan><tspan
+   style="font-weight:normal;line-height:124.00000095%"
    id="authmethod"
-   y="1427.5828"
+   y="1431.7827"
    x="114.76436"
    sodipodi:role="line">PEAP, MSCHAPv2</tspan></text>
     <g
