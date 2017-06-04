@@ -80,13 +80,12 @@ def main():
     cardtpl.set_fnamegen(lambda act: "card-{}.svg".format(act.uid))
     cards = []
 
-    validto = "2017-06-07 00:00 UTC"
     print("Templating cards…")
     delim = "; "
     for line in fileinput.input():
         if delim not in line:
             continue
-        sn, gn, _, uid, password, *_ = line.rstrip().split(delim)
+        sn, gn, _, uid, password, validto, *_ = line.rstrip().split(delim)
         act = Account(gn, sn, uid, password, validto)
         fname = cardtpl.templatetext(act)
         cards.append(fname)
