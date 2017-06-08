@@ -33,17 +33,21 @@ class SVGTemplate:
             self.tpl.write(outf, encoding='utf-8', xml_declaration=True)
         return fname
 
+    @staticmethod
+    def textmodifier(tag, v):
+            tag.text = v
+
+    @staticmethod
+    def xlinkmodifier(tag, v):
+            tag.set('{http://www.w3.org/1999/xlink}href', v)
+
     def templatetext(self, account, outfname=None):
         """Template SVG text"""
-        def m(tag, v):
-            tag.text = v
-        return self.template(account, m, outfname)
+        return self.template(account, self.textmodifier, outfname)
 
     def templatexlink(self, account, outfname=None):
         """Template SVG xlink"""
-        def m(tag, v):
-            tag.set('{http://www.w3.org/1999/xlink}href', v)
-        return self.template(account, m, outfname)
+        return self.template(account, self.xlinkmodifier, outfname)
 
 
 def gensheets(cards, template, dummycard):
