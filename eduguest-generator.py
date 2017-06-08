@@ -56,9 +56,9 @@ def gensheets(cards, template, dummycard):
     Sheet = namedtuple('Sheet', ['pos{}'.format(x) for x in range(10)])
     sheets = []
     cardsets = zip_longest(*[iter(cards)] * 10, fillvalue=dummycard)
-    for i, cards in enumerate(cardsets):
+    for i, cardset in enumerate(cardsets):
         fname = "sheet{:02d}.svg".format(i+1)
-        sheet = Sheet(*[c + "#layer1" for c in cards])
+        sheet = Sheet(*[c + "#layer1" for c in cardset])
         layout.templatexlink(sheet, fname)
         sheets.append(fname)
     return sheets
