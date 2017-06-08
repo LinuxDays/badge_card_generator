@@ -74,7 +74,7 @@
        x="35.433071"
        height="191.33858"
        width="318.89764"
-       id="pos2" />
+       id="pos1" />
     <use
        xlink:href="eduguest-card-dummy.svg#layer1"
        inkscape:tile-y0="56.147919"
@@ -83,7 +83,7 @@
        x="35.433071"
        height="191.33858"
        width="318.89764"
-       id="pos4" />
+       id="pos2" />
     <use
        xlink:href="eduguest-card-dummy.svg#layer1"
        inkscape:tile-y0="56.147919"
@@ -92,7 +92,7 @@
        x="35.433071"
        height="191.33858"
        width="318.89764"
-       id="pos6"
+       id="pos3"
        style="opacity:1;fill:#0ffffc;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <use
        xlink:href="eduguest-card-dummy.svg#layer1"
@@ -102,7 +102,7 @@
        x="35.433071"
        height="191.33858"
        width="318.89764"
-       id="pos8" />
+       id="pos4" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -161,10 +161,10 @@
        x="389.76379"
        height="191.33858"
        width="318.89764"
-       id="pos1" />
+       id="pos5" />
     <use
        xlink:href="eduguest-card-dummy.svg#layer1"
-       id="pos3"
+       id="pos6"
        width="318.89764"
        height="191.33858"
        x="389.76379"
@@ -173,7 +173,7 @@
        inkscape:tile-y0="56.147919" />
     <use
        xlink:href="eduguest-card-dummy.svg#layer1"
-       id="pos5"
+       id="pos7"
        width="318.89764"
        height="191.33858"
        x="389.76379"
@@ -182,7 +182,7 @@
        inkscape:tile-y0="56.147919" />
     <use
        xlink:href="eduguest-card-dummy.svg#layer1"
-       id="pos7"
+       id="pos8"
        width="318.89764"
        height="191.33858"
        x="389.76379"
