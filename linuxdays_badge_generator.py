@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import os
-import fileinput
+import csv
 from itertools import zip_longest
 import xml.etree.ElementTree as ET
 import subprocess
@@ -9,7 +9,7 @@ import unicodedata
 import re
 from collections import namedtuple
 
-Record = namedtuple('Record', ['name'])
+Record = namedtuple('Record', ['name', 'role'])
 outdir = "./out/"
 
 
@@ -86,7 +86,7 @@ def reordercards(cards, rows=4, sheetrows=9, sheetcols=3, dummycard=None):
                 for sheetrow in range(sheetrows):
                     yield s[rowoffset + coloffset + sheetrow]
 
-def gensheets(cards, template, dummycard="", ncards=27, rows=4):
+def gensheets(cards, template, dummycard="", rows=4, ncards=27):
     """
     Put ncards cards on a sheet. Fill the rest of sheet with dummy cards.
     Align cards into column, considering rows of subsequent sheets
@@ -111,7 +111,7 @@ def pdfsheets(sheets):
     """Convert sheets to PDF"""
     isscript = []
     for fname in sheets:
-        isscript.append("{} -A={}pdf".format(fname, fname[:-3]))
+        isscript.append("{} -T -A={}pdf".format(fname, fname[:-3]))
     isscript.append("quit\n")
     isscript = "\n".join(isscript).encode("utf-8")
     os.chdir(outdir)
@@ -125,32 +125,38 @@ def pdfunite(sheets, output):
     subprocess.check_output(cmd)
 
 def cardnamegen(record):
-    slug = unicodedata.normalize('NFKD', record.name)
+    slug = "{}-{}".format(record.name, record.role)
+    slug = unicodedata.normalize('NFKD', slug)
     slug = slug.encode('ascii', 'ignore').decode('ascii').lower()
     slug = re.sub(r'[^a-z0-9]+', '-', slug).strip('-')
     slug = re.sub(r'[-]+', '-', slug)
     return "card-{}.svg".format(slug)
 
+def getrecords(f):
+    with open(f, "r") as inf:
+        reader = csv.DictReader(inf, dialect='excel-tab')
+        for row in reader:
+            name, role = (row[_].strip() for _ in ['name', 'role'])
+            yield Record(name, role)
+
 def main():
     cardtpl = SVGTemplate('linuxdays-badge.svg', outdir)
     cardtpl.fnamegen = cardnamegen
     cards = []
+    rows = 3
 
     print("Templating cards…")
-    for line in fileinput.input():
-        name = line.rstrip()
-        rec = Record(name)
+    for rec in getrecords("badges.tsv"):
         fname = cardtpl.templatetext(rec)
         cards.append(fname)
-    cards = reordercards(cards, dummycard='../linuxdays-badge-dummy.svg')
+    cards = reordercards(cards, dummycard='../linuxdays-badge-dummy.svg', rows=rows)
 
     print("Creating layouts…")
-    sheets = gensheets(cards, 'avery-L4784-templatexlink.svg')
+    sheets = gensheets(cards, 'avery-L4784-templatexlink.svg', rows=rows)
     print("Converting to pdf…")
     pdfsheets(sheets)
     print("Joining all together…")
     pdfunite(sheets, 'badges-output.pdf')
-
 
 
 if __name__ == "__main__":
