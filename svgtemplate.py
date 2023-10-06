@@ -115,7 +115,11 @@ def pdfsheets(sheets):
     """
     isscript = []
     for fname in sheets:
-        isscript.append("{} -T -A={}pdf".format(fname, fname[:-3]))
+        isscript.append(f'file-open:{fname}')
+        isscript.append('export-type:pdf')
+        isscript.append(f'export-filename:{fname[:-3]}pdf')
+        isscript.append('export-do')
+        isscript.append('file-close')
     isscript.append("quit\n")
     isscript = "\n".join(isscript).encode("utf-8")
     subprocess.check_output(['inkscape', '--shell'], input=isscript)
